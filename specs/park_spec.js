@@ -87,7 +87,20 @@ const actual = park.guestPerDay()
       park.addDinosaus(dinosaur1)
         park.addDinosaus(dinosaur1)
     park.addDinosaus(dinosaur2)
-    const actual = park.removeSpecies('t-rex').length;
-    assert.strictEqual(actual,1);
+    const actual = park.removeSpecies('t-rex');
+    assert.deepStrictEqual(actual,[dinosaur2]);
+  });
+
+
+  it('shoud be able to provide an array containing the diet type and number of dinosaurs with diet', function(){
+    park.addDinosaus(dinosaur1)
+      park.addDinosaus(dinosaur1)
+        park.addDinosaus(dinosaur1)
+    park.addDinosaus(dinosaur2)
+    const actual = park.diets();
+    assert.deepStrictEqual(actual, {
+      carnivore: 3,
+      herbivore: 1,
+    });
   });
 });
